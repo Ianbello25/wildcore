@@ -35,7 +35,7 @@ export default function Home() {
           </p>
 
           <h2 className="manifesto-title mt-8 max-w-5xl">
-            WE DON'T FOLLOW
+            <p>Don&apos;t follow trends.</p>
             <span>TRENDS.</span>
             <br />
             WE BUILD
