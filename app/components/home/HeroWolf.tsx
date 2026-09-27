@@ -1,12 +1,23 @@
+import Image from "next/image";
+
 export default function HeroWolf() {
   return (
     <div className="hero-wolf" aria-hidden="true">
-      <div className="wolf-eye wolf-eye-left" />
-      <div className="wolf-eye wolf-eye-right" />
+      <div className="hero-wolf-glow" />
 
-      <p className="wolf-placeholder-text">
-        THE WOLF WITHIN
-      </p>
+      <Image
+        src="/images/hero/wolf.png"
+        alt=""
+        fill
+        priority
+        sizes="(max-width: 768px) 145vw, 64vw"
+        className="hero-wolf-image"
+      />
+
+      <div className="hero-wolf-eyes">
+        <span className="hero-wolf-eye hero-wolf-eye-left" />
+        <span className="hero-wolf-eye hero-wolf-eye-right" />
+      </div>
     </div>
   );
 }

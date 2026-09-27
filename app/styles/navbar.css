@@ -39,13 +39,15 @@
 }
 
 .navbar-logo {
-  width: 78px;
+  width: 82px;
   height: auto;
   object-fit: contain;
+
   transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+    opacity .45s ease,
+    transform .45s cubic-bezier(.22,1,.36,1);
 }
+
 
 .group:hover .navbar-logo {
   opacity: 0.75;

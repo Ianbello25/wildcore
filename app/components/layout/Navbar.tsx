@@ -1,67 +1,119 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
+import CartButton from "../cart/CartButton";
+import SearchOverlay from "../search/SearchOverlay";
+
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 60);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur-md">
-      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
-        {/* LOGO */}
-        <a
-          href="#"
-          aria-label="WILDCORE Home"
-          className="group flex items-center"
+    <>
+      <header
+        className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ${
+          scrolled
+            ? "border-b border-white/10 bg-black/55 backdrop-blur-2xl shadow-[0_10px_40px_rgba(0,0,0,.28)]"
+            : "border-b border-transparent bg-transparent"
+        }`}
+      >
+        <nav
+          className={`mx-auto flex max-w-7xl items-center justify-between px-6 transition-all duration-500 lg:px-10 ${
+            scrolled ? "h-16" : "h-20"
+          }`}
         >
-          <Image
-            src="/images/wdce-logo.png"
-            alt="WDCE"
-            width={110}
-            height={55}
-            priority
-            className="navbar-logo"
-          />
-        </a>
+          {/* =========================================
+              LOGO
+          ========================================= */}
 
-        {/* DESKTOP MENU */}
-        <div className="hidden items-center gap-9 text-xs font-medium uppercase tracking-[0.2em] md:flex">
-          <a href="#shop" className="nav-link">
-            Shop
-          </a>
-
-          <a href="#shop" className="nav-link">
-            New Drop
-          </a>
-
-          <a href="#collections" className="nav-link">
-            Collections
-          </a>
-
-          <a href="#about" className="nav-link">
-            About
-          </a>
-        </div>
-
-        {/* ACTIONS */}
-        <div className="flex items-center gap-5">
-          <button
-            type="button"
-            aria-label="Buscar productos"
-            className="nav-icon"
+          <a
+            href="/"
+            aria-label="WILDCORE Home"
+            className="group flex items-center"
           >
-            SEARCH
-          </button>
+            <Image
+              src="/images/wdce-logo.png"
+              alt="WILDCORE"
+              width={120}
+              height={50}
+              className={`navbar-logo transition-transform duration-500 ${
+                scrolled ? "scale-90" : "scale-100"
+              }`}
+              priority
+            />
+          </a>
 
-          <button
-            type="button"
-            aria-label="Abrir bolsa de compras"
-            className="relative nav-icon"
-          >
-            BAG
+          {/* =========================================
+              DESKTOP MENU
+          ========================================= */}
 
-            <span className="absolute -right-3 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-[#e31b23] text-[9px] text-white">
-              0
-            </span>
-          </button>
-        </div>
-      </nav>
-    </header>
+          <div className="hidden items-center gap-9 text-xs font-medium uppercase tracking-[0.2em] md:flex">
+            <a href="/#shop" className="nav-link">
+              Shop
+            </a>
+
+            <a href="/#new-drop" className="nav-link">
+              New Drop
+            </a>
+
+            <a href="/#collections" className="nav-link">
+              Collections
+            </a>
+
+            <a href="/#about" className="nav-link">
+              About
+            </a>
+          </div>
+
+          {/* =========================================
+              ACTIONS
+          ========================================= */}
+
+          <div className="flex items-center gap-5">
+            {/* SEARCH */}
+
+            <button
+              type="button"
+              aria-label="Buscar productos"
+              className="nav-icon"
+              onClick={() => setSearchOpen(true)}
+            >
+              Search
+            </button>
+
+            {/* CART */}
+
+            <CartButton />
+          </div>
+        </nav>
+      </header>
+
+      {/* =========================================
+          SEARCH OVERLAY
+      ========================================= */}
+
+      <SearchOverlay
+        isOpen={searchOpen}
+        onClose={() => setSearchOpen(false)}
+      />
+    </>
   );
 }

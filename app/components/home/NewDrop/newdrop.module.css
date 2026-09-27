@@ -1,0 +1,485 @@
+.newDrop {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, rgba(227, 27, 35, .12), transparent 28%),
+    linear-gradient(
+      180deg,
+      #030303 0%,
+      #090909 35%,
+      #050505 100%
+      
+    );
+     scroll-margin-top: 80px;
+}
+
+.dropHeader {
+    min-height: 72vh;
+    padding: 110px 24px 80px;
+}
+
+.headerGlow {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: min(900px, 85vw);
+  height: 420px;
+  border-radius: 50%;
+  background: rgba(227, 27, 35, 0.12);
+  filter: blur(130px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.dropNumber {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 0 0 32px;
+  color: #77777f;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+}
+
+.dropNumber span {
+  color: #e31b23;
+}
+
+.dropTitle {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(4rem, 10vw, 8.5rem);
+line-height: .84;
+  font-weight: 900;
+  line-height: 0.78;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+
+.dropTitle span {
+  color: #e31b23;
+}
+
+.dropIntro {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin: 42px auto 0;
+  color: #85858d;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.scrollLine {
+  position: absolute;
+  bottom: 38px;
+  left: 50%;
+  width: 1px;
+  height: 45px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.scrollLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #e31b23;
+  transform: translateY(-100%);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+.dropList {
+  width: 100%;
+}
+
+.dropCard {
+  width: min(1440px, calc(100% - 80px));
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns:
+minmax(0,1.65fr)
+minmax(320px,.55fr);
+  align-items: center;
+  gap: clamp(55px, 7vw, 120px);
+  margin: 0 auto;
+  padding: 110px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.alignLeft {
+  grid-template-columns: minmax(300px, 0.65fr) minmax(0, 1.45fr);
+}
+
+.alignLeft .imageColumn {
+  order: 2;
+}
+
+.alignLeft .contentColumn {
+  order: 1;
+}
+
+.imageColumn {
+  min-width: 0;
+}
+
+.imageFrame {
+  position: relative;
+  width: 100%;
+  height:min(86vh,980px);
+  min-height:700px;
+  overflow: hidden;
+  background: #111111;
+  transition:
+  transform .8s cubic-bezier(.22,1,.36,1),
+  box-shadow .8s;
+}
+.imageFrame:hover {
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, .45),
+    0 0 50px rgba(227, 27, 35, .08);
+}
+.imageFrame::before {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.dropImage {
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.9) contrast(1.04);
+  transition:
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.2s ease;
+}
+
+.imageFrame:hover .dropImage {
+  transform:scale(1.03)translateY(-10px);
+  filter: saturate(1.05) contrast(1.08);
+}
+
+.imageOverlay{
+
+background:
+
+linear-gradient(
+180deg,
+rgba(0,0,0,.12),
+transparent 35%,
+rgba(0,0,0,.72) 100%
+),
+
+linear-gradient(
+90deg,
+rgba(227,27,35,.10),
+transparent 42%
+);
+
+}
+
+.imageNoise {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.35'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.imageNumber {
+  position: absolute;
+  z-index: 5;
+  top: 28px;
+  left: 30px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 10px;
+  letter-spacing: 0.35em;
+}
+
+.imageCaption {
+  position: absolute;
+  z-index: 5;
+  right: 28px;
+  bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  margin: 0;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+}
+
+.imageCaption span {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 8px;
+}
+
+.contentColumn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cardLabel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 28px;
+  color: #7c7c84;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+}
+
+.cardLabel span {
+  color: #e31b23;
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(4rem, 7vw, 7.6rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.cardSubtitle {
+  margin: 23px 0 0;
+  color: #f1f1f1;
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.cardDivider {
+  width: 72px;
+  height: 1px;
+  margin: 34px 0;
+  background: #e31b23;
+}
+
+.cardDescription {
+  max-width: 430px;
+  margin: 0;
+  color: #84848c;
+  font-size: 13px;
+  line-height: 1.95;
+}
+
+.shopButton {
+  min-width: 205px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 34px;
+  margin-top: 45px;
+  padding: 18px 22px;
+  border: 1px solid rgba(227, 27, 35, 0.75);
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-decoration: none;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.shopButton:hover {
+  background: #e31b23;
+  border-color: #e31b23;
+  transform: translateY(-3px);
+}
+
+.shopButton span:last-child {
+  font-size: 17px;
+  letter-spacing: 0;
+  transition: transform 0.35s ease;
+}
+
+.shopButton:hover span:last-child {
+  transform: translateX(5px);
+}
+
+.dropFooter {
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  width: min(1440px, calc(100% - 80px));
+  margin: 0 auto;
+}
+
+.dropFooter p {
+  margin: 0;
+  color: #62626a;
+  font-size: 9px;
+  letter-spacing: 0.4em;
+}
+
+.collectionLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.collectionLink:hover {
+  color: #e31b23;
+}
+
+.collectionLink span {
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
+@keyframes scrollLine {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  50%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@media (max-width: 1100px) {
+  .dropCard,
+  .alignLeft {
+    grid-template-columns: 1fr;
+    gap: 55px;
+    min-height: auto;
+    padding: 100px 0;
+  }
+
+  .alignLeft .imageColumn,
+  .alignLeft .contentColumn {
+    order: initial;
+  }
+
+  .imageColumn {
+    order: 1;
+  }
+
+  .contentColumn {
+    order: 2;
+    max-width: 620px;
+  }
+
+  .imageFrame {
+    height: 72vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .dropHeader {
+    min-height: 80vh;
+    padding: 120px 20px 90px;
+  }
+
+  .dropNumber {
+    font-size: 8px;
+    letter-spacing: 0.32em;
+  }
+
+  .dropTitle {
+    font-size: clamp(4rem, 20vw, 7rem);
+    line-height: 0.83;
+  }
+
+  .dropIntro {
+    max-width: 340px;
+    margin-top: 32px;
+    font-size: 11px;
+  }
+
+  .dropCard,
+  .alignLeft {
+    width: calc(100% - 32px);
+    gap: 40px;
+    padding: 72px 0;
+  }
+
+  .imageFrame {
+    height: 68vh;
+    min-height: 500px;
+  }
+
+  .imageNumber {
+    top: 20px;
+    left: 20px;
+  }
+
+  .imageCaption {
+    right: 20px;
+    bottom: 22px;
+  }
+
+  .cardTitle {
+    font-size: clamp(3.7rem, 18vw, 5.7rem);
+  }
+
+  .cardSubtitle {
+    margin-top: 18px;
+  }
+
+  .cardDivider {
+    margin: 27px 0;
+  }
+
+  .cardDescription {
+    font-size: 12px;
+    line-height: 1.85;
+  }
+
+  .shopButton {
+    width: 100%;
+    margin-top: 35px;
+  }
+
+  .dropFooter {
+    width: calc(100% - 32px);
+    min-height: 220px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollLine::after {
+    animation: none;
+  }
+
+  .dropImage,
+  .shopButton,
+  .shopButton span:last-child {
+    transition: none;
+  }
+}

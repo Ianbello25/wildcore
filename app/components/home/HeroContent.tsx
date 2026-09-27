@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import Button from "../ui/Button";
 
 export default function HeroContent() {
@@ -7,18 +7,6 @@ export default function HeroContent() {
       <p className="hero-eyebrow">
         MEXICAN FITNESS &amp; STREETWEAR
       </p>
-
-      <div className="hero-logo-wrapper">
-        <Image
-          src="/images/wildcore-logo.png"
-          alt="WILDCORE — Inner Strength"
-          width={1500}
-          height={960}
-          priority
-          className="hero-main-logo"
-        />
-      </div>
-
       <p className="hero-slogan">
         FORGED BY DISCIPLINE
       </p>

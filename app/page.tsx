@@ -1,45 +1,34 @@
 import Image from "next/image";
 import Navbar from "./components/layout/Navbar";
 import Hero from "./components/home/Hero";
-
-const products = [
-  {
-    name: "WILDCORE OVERSIZED TEE",
-    category: "ESSENTIALS",
-    price: "$899 MXN",
-  },
-  {
-    name: "CORE TRAINING SHORT",
-    category: "TRAINING",
-    price: "$799 MXN",
-  },
-  {
-    name: "INNER STRENGTH HOODIE",
-    category: "LIMITED DROP",
-    price: "$1,299 MXN",
-  },
-];
+import NewDrop from "./components/home/NewDrop/NewDrop";
+import Philosophy from "./components/home/Philosophy/Philosophy";
+import Collections from "./components/home/Collections/Collections";
+import OurStory from "./components/home/OurStory/OurStory";
+import Newsletter from "./components/home/Newsletter/Newsletter";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white">
-    <Navbar />
-<Hero />
-
-
+      <Navbar />
+      <Hero />
+      <NewDrop />
+      <Collections />
+      <Philosophy />
+      
       {/* MANIFESTO */}
       <section className="border-y border-white/10 bg-[#080808] px-6 py-32 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <p className="section-label">
-            THE WILDCORE MINDSET
-          </p>
+          <p className="section-label">THE WILDCORE MINDSET</p>
 
           <h2 className="manifesto-title mt-8 max-w-5xl">
-            <p>Don&apos;t follow trends.</p>
-            <span>TRENDS.</span>
-            <br />
-            WE BUILD
-            <span>IDENTITY.</span>
+            <span className="block">Don&apos;t follow trends.</span>
+
+            <span className="block">TRENDS.</span>
+
+            <span className="block">
+              WE BUILD <span>IDENTITY.</span>
+            </span>
           </h2>
 
           <div className="mt-16 flex justify-end">
@@ -52,69 +41,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SHOP */}
-      <section id="shop" className="bg-black px-6 py-32 lg:px-10">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="section-label">01 — THE COLLECTION</p>
-
-              <h2 className="section-title mt-4">
-                NEW <span>DROP</span>
-              </h2>
-            </div>
-
-            <a
-              href="#"
-              className="text-xs uppercase tracking-[0.3em] text-zinc-500 transition-colors hover:text-[#E31B23]"
-            >
-              View all products →
-            </a>
-          </div>
-
-          {/* PRODUCT GRID */}
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {products.map((product, index) => (
-              <article
-                key={product.name}
-                className="product-card group"
-              >
-                {/* IMAGE PLACEHOLDER */}
-                <div className="product-image">
-                  <span className="absolute left-5 top-5 z-10 text-[9px] uppercase tracking-[0.3em] text-zinc-500">
-                    0{index + 1}
-                  </span>
-
-                  <div className="product-placeholder">
-                    WILDCORE
-                  </div>
-
-                  <button className="product-button">
-                    QUICK ADD +
-                  </button>
-                </div>
-
-                <div className="mt-5 flex justify-between gap-4">
-                  <div>
-                    <p className="text-[9px] uppercase tracking-[0.3em] text-zinc-600">
-                      {product.category}
-                    </p>
-
-                    <h3 className="mt-2 text-sm font-medium tracking-wide">
-                      {product.name}
-                    </h3>
-                  </div>
-
-                  <p className="text-sm text-zinc-400">
-                    {product.price}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* BRAND STORY */}
       <section
         id="about"
@@ -122,9 +48,7 @@ export default function Home() {
       >
         <div className="mx-auto grid max-w-7xl gap-20 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="section-label">
-              02 — WILDCORE IDENTITY
-            </p>
+            <p className="section-label">02 — WILDCORE IDENTITY</p>
 
             <h2 className="section-title mt-6">
               BUILT
@@ -138,9 +62,9 @@ export default function Home() {
               estética.
             </p>
 
-            <a href="#" className="red-button mt-10">
+            <a href="#story" className="red-button mt-10">
               OUR STORY
-              <span>→</span>
+              <span aria-hidden="true">→</span>
             </a>
           </div>
 
@@ -160,14 +84,14 @@ export default function Home() {
             </p>
           </div>
         </div>
+        
       </section>
+<OurStory />
 
       {/* PHILOSOPHY */}
       <section className="px-6 py-32 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <p className="section-label">
-            03 — THE PHILOSOPHY
-          </p>
+          <p className="section-label">03 — THE PHILOSOPHY</p>
 
           <div className="mt-16 space-y-4">
             <div className="philosophy-line">
@@ -189,63 +113,48 @@ export default function Home() {
       </section>
 
       {/* NEWSLETTER */}
-      <section className="border-t border-white/10 bg-[#080808] px-6 py-24 text-center">
-        <p className="section-label">
-          JOIN THE CORE
-        </p>
-
-        <h2 className="section-title mt-6">
-          STAY <span>WILD.</span>
-        </h2>
-
-        <p className="mx-auto mt-6 max-w-md text-sm leading-7 text-zinc-500">
-          Sé parte de la comunidad WILDCORE y descubre nuevos drops,
-          colecciones limitadas y lanzamientos exclusivos.
-        </p>
-
-        <div className="mx-auto mt-10 flex max-w-md border-b border-white/20">
-          <input
-            type="email"
-            placeholder="YOUR EMAIL"
-            className="newsletter-input"
-          />
-
-          <button className="text-xs font-medium uppercase tracking-[0.2em] text-[#E31B23] transition-colors hover:text-white">
-            JOIN →
-          </button>
-        </div>
-      </section>
+<Newsletter />
+      
 
       {/* FOOTER */}
       <footer className="border-t border-white/10 bg-black px-6 py-12 lg:px-10">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
-  <Image
-    src="/images/wdce-logo.png"
-    alt="WDCE"
-    width={120}
-    height={60}
-    className="footer-logo"
-  />
+            <Image
+              src="/images/wdce-logo.png"
+              alt="WDCE"
+              width={120}
+              height={60}
+              className="footer-logo"
+            />
 
-  <p className="mt-3 text-[9px] uppercase tracking-[0.5em] text-zinc-600">
-    INNER STRENGTH
-  </p>
-</div>
-
-          <div className="flex gap-8 text-[9px] uppercase tracking-[0.3em] text-zinc-500">
-            <a href="#" className="hover:text-[#E31B23]">
-              Instagram
-            </a>
-
-            <a href="#" className="hover:text-[#E31B23]">
-              TikTok
-            </a>
-
-            <a href="#" className="hover:text-[#E31B23]">
-              Contact
-            </a>
+            <p className="mt-3 text-[9px] uppercase tracking-[0.5em] text-zinc-600">
+              INNER STRENGTH
+            </p>
           </div>
+
+          <nav
+  aria-label="Redes sociales"
+  className="flex gap-8 text-[9px] uppercase tracking-[0.3em] text-zinc-500"
+>
+  <a
+    href="https://www.instagram.com/wildcoreoficial/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="transition-colors hover:text-[#E31B23]"
+  >
+    Instagram
+  </a>
+
+  <a
+    href="https://www.tiktok.com/@wildcoreoficiall"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="transition-colors hover:text-[#E31B23]"
+  >
+    TikTok
+  </a>
+</nav>
 
           <p className="text-[9px] uppercase tracking-[0.2em] text-zinc-700">
             © 2026 WILDCORE

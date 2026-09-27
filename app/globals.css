@@ -1,9 +1,4 @@
 @import "tailwindcss";
-@import "./styles/variables.css";
-@import "./styles/typography.css";
-@import "./styles/buttons.css";
-@import "./styles/navbar.css";
-@import "./styles/hero.css";
 :root {
   --background: #050505;
   --foreground: #ffffff;
@@ -33,114 +28,6 @@ body {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-weight: 900;
 }
-
-/* WOLF TEMPORARY PLACEHOLDER */
-
-.hero-wolf {
-  position: absolute;
-  z-index: 0;
-  top: 19%;
-  left: 7%;
-  width: 450px;
-  height: 340px;
-  opacity: 0.22;
-  pointer-events: none;
-  border-radius: 48% 52% 46% 54%;
-  background:
-    radial-gradient(
-      ellipse at center,
-      rgba(20, 20, 20, 0.96),
-      transparent 68%
-    );
-  filter: drop-shadow(0 0 45px rgba(176, 0, 23, 0.18));
-}
-
-.wolf-eye {
-  position: absolute;
-  top: 39%;
-  width: 25px;
-  height: 7px;
-  border-radius: 50%;
-  background: #e31b23;
-  box-shadow:
-    0 0 8px #e31b23,
-    0 0 22px rgba(227, 27, 35, 0.85);
-  animation: wolfEyes 4.5s ease-in-out infinite;
-}
-
-.wolf-eye-left {
-  left: 36%;
-  transform: rotate(8deg);
-}
-
-.wolf-eye-right {
-  right: 36%;
-  transform: rotate(-8deg);
-}
-
-.wolf-placeholder-text {
-  position: absolute;
-  bottom: 17%;
-  left: 50%;
-  width: 100%;
-  transform: translateX(-50%);
-  color: rgba(255, 255, 255, 0.17);
-  text-align: center;
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 0.65em;
-}
-
-/* ATHLETE TEMPORARY PLACEHOLDER */
-
-.hero-athlete {
-  position: relative;
-  align-self: end;
-  height: min(780px, calc(100svh - 110px));
-  z-index: 2;
-  animation: athleteReveal 1.25s ease 0.35s both;
-}
-
-.athlete-placeholder {
-  position: absolute;
-  inset: 7% 3% 0 4%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-left: 1px solid rgba(227, 27, 35, 0.15);
-  border-right: 1px solid rgba(227, 27, 35, 0.08);
-  background:
-    radial-gradient(
-      ellipse at center,
-      rgba(176, 0, 23, 0.18),
-      rgba(10, 10, 10, 0.3) 46%,
-      transparent 72%
-    );
-  clip-path: polygon(
-    28% 0,
-    72% 0,
-    92% 20%,
-    100% 100%,
-    0 100%,
-    8% 20%
-  );
-}
-
-.athlete-placeholder span {
-  color: rgba(255, 255, 255, 0.13);
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: clamp(3rem, 5vw, 6rem);
-  letter-spacing: 0.02em;
-}
-
-.athlete-placeholder small {
-  margin-top: 12px;
-  color: rgba(227, 27, 35, 0.35);
-  font-size: 8px;
-  letter-spacing: 0.5em;
-}
-
 /* SIDE VALUES */
 
 .hero-values {
@@ -204,18 +91,6 @@ body {
   }
 }
 
-@keyframes athleteReveal {
-  from {
-    opacity: 0;
-    transform: translateX(35px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 @keyframes heroLogoBreath {
   0%,
   100% {
@@ -240,20 +115,6 @@ body {
 
   to {
     transform: translate3d(2%, -1%, 0) scale(1.06);
-  }
-}
-
-@keyframes wolfEyes {
-  0%,
-  44%,
-  55%,
-  100% {
-    opacity: 0.65;
-  }
-
-  48%,
-  51% {
-    opacity: 0.08;
   }
 }
 
@@ -615,40 +476,17 @@ body {
     font-size: 0.68rem;
     letter-spacing: 0.33em;
   }
-
   .hero-description {
     max-width: 340px;
     margin: 20px auto 0;
     font-size: 11px;
     line-height: 1.8;
   }
-
   .hero-actions {
     flex-direction: column;
     gap: 24px;
     margin-top: 28px;
   }
-
-  .hero-athlete {
-    position: absolute;
-    inset: auto -15% 0 35%;
-    height: 58%;
-    opacity: 0.63;
-  }
-
-  .athlete-placeholder {
-    inset: 0;
-  }
-
-  .hero-wolf {
-    top: 17%;
-    left: 50%;
-    width: 330px;
-    height: 250px;
-    transform: translateX(-50%);
-    opacity: 0.17;
-  }
-
   .hero-values {
     display: none;
   }
@@ -667,4 +505,285 @@ body {
     height: 420px;
     inset: 65% auto auto 70%;
   }
+}
+/* ==========================================
+   NEW DROP
+========================================== */
+
+.new-drop{
+    position:relative;
+    background:#050505;
+    overflow:hidden;
+}
+
+.drop-header{
+
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:120px 30px;
+
+}
+
+.drop-header span{
+
+    color:#8d8d8d;
+
+    letter-spacing:.45rem;
+
+    font-size:.8rem;
+
+    text-transform:uppercase;
+
+    margin-bottom:25px;
+
+}
+
+.drop-header h1{
+
+    font-size:clamp(4rem,10vw,9rem);
+
+    line-height:.85;
+
+    font-weight:900;
+
+    letter-spacing:-5px;
+
+    color:white;
+
+}
+
+.drop-card{
+
+    width:min(1500px,90%);
+    margin:auto;
+
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:1.4fr .8fr;
+
+    gap:80px;
+
+    align-items:center;
+
+    padding:120px 0;
+
+}
+
+.drop-left{
+
+    grid-template-columns:.8fr 1.4fr;
+
+}
+
+.drop-left .drop-content{
+
+    order:1;
+
+}
+
+.drop-left .drop-image{
+
+    order:2;
+
+}
+
+.drop-image{
+
+    position:relative;
+
+    height:80vh;
+
+    overflow:hidden;
+
+    border-radius:28px;
+
+    background:#111;
+
+}
+
+.drop-img{
+
+    object-fit:cover;
+
+    transition:1s ease;
+
+}
+
+.drop-image:hover .drop-img{
+
+    transform:scale(1.05);
+
+}
+
+.drop-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+.drop-label{
+
+    color:#d62b2b;
+
+    letter-spacing:.4rem;
+
+    font-size:.75rem;
+
+    margin-bottom:18px;
+
+}
+
+.drop-content h2{
+
+    font-size:clamp(3rem,6vw,6rem);
+
+    line-height:.9;
+
+    color:white;
+
+    margin-bottom:10px;
+
+}
+
+.drop-content h3{
+
+    color:#f2f2f2;
+
+    font-size:1.6rem;
+
+    margin-bottom:25px;
+
+    font-weight:600;
+
+}
+
+.drop-content p{
+
+    color:#8c8c8c;
+
+    line-height:1.8;
+
+    max-width:420px;
+
+    margin-bottom:45px;
+
+}
+
+.drop-button{
+
+    width:max-content;
+
+    padding:16px 34px;
+
+    border:none;
+
+    background:#d61d1d;
+
+    color:white;
+
+    font-weight:700;
+
+    letter-spacing:.08rem;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.drop-button:hover{
+
+    transform:translateY(-4px);
+
+    background:#ff2b2b;
+
+    box-shadow:0 15px 40px rgba(255,0,0,.25);
+
+}
+
+@media(max-width:1100px){
+
+.drop-card{
+
+grid-template-columns:1fr;
+
+gap:50px;
+
+}
+
+.drop-left .drop-content{
+
+order:2;
+
+}
+
+.drop-left .drop-image{
+
+order:1;
+
+}
+
+.drop-image{
+
+height:70vh;
+
+}
+
+.drop-content{
+
+text-align:center;
+
+align-items:center;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.drop-header h1{
+
+font-size:4rem;
+
+letter-spacing:-2px;
+
+}
+
+.drop-card{
+
+padding:80px 0;
+
+}
+
+.drop-image{
+
+height:55vh;
+
+}
+
+.drop-content h2{
+
+font-size:3rem;
+
+}
+
+.drop-content h3{
+
+font-size:1.2rem;
+
+}
+
 }
